@@ -1,0 +1,307 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Step_1___Generate_Key_Pair" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2434,2149" sap2010:WorkflowViewState.IdRef="Step_1___Generate_Key_Pair_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ufa="clr-namespace:UiPath.Form.Activities;assembly=UiPath.Form.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upa="clr-namespace:UiPathTeam.PGPEncryption.Activities;assembly=UiPathTeam.PGPEncryption.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="56">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Form.Activities</x:String>
+      <x:String>UiPathTeam_PGPEncryption_Activities</x:String>
+      <x:String>UiPathTeam.PGPEncryption.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
+      <AssemblyReference>UiPathTeam.PGPEncryption.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Step_1___Generate_Key_Pair" sap:VirtualizedContainerService.HintSize="810,2084" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\lib\private.key&quot;]" Name="FilePrivateKey" />
+      <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\lib\public.key&quot;]" Name="FilePublicKey" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="errors" />
+      <Variable x:TypeArguments="x:String" Name="FileInput">
+        <Variable.Default>
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="environment.CurrentDirectory+&quot;\Data\Input\raw.txt&quot;" />
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\data\encrypted.pgp&quot;]" Name="FileEncrypted" />
+      <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\data\decrypted.txt&quot;]" Name="FileDecrypted" />
+      <Variable x:TypeArguments="x:String" Name="button" />
+      <Variable x:TypeArguments="x:String" Name="FolderHome" />
+      <Variable x:TypeArguments="x:String" Name="status" />
+      <Variable x:TypeArguments="x:String" Name="TextInput" />
+      <Variable x:TypeArguments="x:Boolean" Name="Result" />
+      <Variable x:TypeArguments="x:String" Name="TextOutput" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Default Demo Data" sap:VirtualizedContainerService.HintSize="431,225" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[FolderHome]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[environment.CurrentDirectory+"\data\"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[FileInput]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[FolderHome+"Input\raw.txt"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[FileEncrypted]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[FolderHome+"Output\"+system.io.path.GetFileNameWithoutExtension(FileInput)+"_encrypted.txt"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[status]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">......</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[FilePublicKey]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[FolderHome+"Keys\PublicKey.sec"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" FormFieldsOutputData="{x:Null}" FormTitle="{x:Null}" IconPath="{x:Null}" LocalCSSFilePath="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="2ad8360b-44e3-41b8-9544-88e1f4c540e9" DevTools="False" DisableMaximizeButton="False" DisableMinimizeButton="False" DisableSanitize="False" DisplayName="Create Form" EnableAccessibility="False" FormHeight="794" FormSchema="%[{&quot;title&quot;:&quot;Encrypt a Text FIle&quot;,&quot;collapsible&quot;:false,&quot;key&quot;:&quot;generateKeyPair&quot;,&quot;type&quot;:&quot;panel&quot;,&quot;label&quot;:&quot;Generate Key Pair&quot;,&quot;calculateServer&quot;:false,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;components&quot;:[{&quot;columns&quot;:[{&quot;components&quot;:[{&quot;label&quot;:&quot;Exit&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;block&quot;:true,&quot;disableOnInvalid&quot;:true,&quot;tableView&quot;:false,&quot;key&quot;:&quot;Exit&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;type&quot;:&quot;button&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;hideOnChildrenHidden&quot;:false}],&quot;width&quot;:2,&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0,&quot;size&quot;:&quot;md&quot;},{&quot;components&quot;:[{&quot;label&quot;:&quot;Clear&quot;,&quot;action&quot;:&quot;custom&quot;,&quot;block&quot;:true,&quot;disableOnInvalid&quot;:true,&quot;tableView&quot;:false,&quot;key&quot;:&quot;clear&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;type&quot;:&quot;button&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;hideOnChildrenHidden&quot;:false}],&quot;width&quot;:2,&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0,&quot;size&quot;:&quot;md&quot;},{&quot;components&quot;:[{&quot;label&quot;:&quot;Execute&quot;,&quot;action&quot;:&quot;custom&quot;,&quot;theme&quot;:&quot;info&quot;,&quot;block&quot;:true,&quot;disableOnInvalid&quot;:true,&quot;tableView&quot;:false,&quot;key&quot;:&quot;submit&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;type&quot;:&quot;button&quot;,&quot;input&quot;:true,&quot;calculateServer&quot;:false,&quot;hideOnChildrenHidden&quot;:false}],&quot;size&quot;:&quot;md&quot;,&quot;width&quot;:2,&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0},{&quot;components&quot;:[{&quot;label&quot;:&quot;Status&quot;,&quot;hideLabel&quot;:true,&quot;disabled&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;status&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;rows&quot;:1,&quot;input&quot;:true,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true}],&quot;size&quot;:&quot;md&quot;,&quot;width&quot;:6,&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0}],&quot;tableView&quot;:false,&quot;key&quot;:&quot;columns&quot;,&quot;type&quot;:&quot;columns&quot;,&quot;calculateServer&quot;:false,&quot;input&quot;:false,&quot;label&quot;:&quot;Columns&quot;},{&quot;columns&quot;:[{&quot;components&quot;:[{&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;Public Key File&quot;,&quot;key&quot;:&quot;label&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Label&quot;,&quot;type&quot;:&quot;label&quot;,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;File/Folder Path&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;hideLabel&quot;:true,&quot;key&quot;:&quot;filePublicKey&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select&quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true},{&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;Input File (Raw)&quot;,&quot;key&quot;:&quot;label3&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Label&quot;,&quot;type&quot;:&quot;label&quot;,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;File/Folder Path&quot;,&quot;customClass&quot;:&quot;filePath&quot;,&quot;hideLabel&quot;:true,&quot;key&quot;:&quot;fileInput&quot;,&quot;input&quot;:true,&quot;suffix&quot;:&quot;Select&quot;,&quot;tableView&quot;:true,&quot;type&quot;:&quot;filePath&quot;,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true},{&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;Output FIle (Encrypted)&quot;,&quot;key&quot;:&quot;label1&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Label&quot;,&quot;type&quot;:&quot;label&quot;,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;Public Key File&quot;,&quot;hideLabel&quot;:true,&quot;spellcheck&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;fileOutput&quot;,&quot;type&quot;:&quot;textfield&quot;,&quot;input&quot;:true,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false}],&quot;width&quot;:6,&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0,&quot;size&quot;:&quot;md&quot;},{&quot;components&quot;:[{&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;Input Text (Raw)&quot;,&quot;key&quot;:&quot;label4&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Label&quot;,&quot;type&quot;:&quot;label&quot;,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;Private Key&quot;,&quot;hideLabel&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;textInput&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;rows&quot;:13,&quot;input&quot;:true,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true},{&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;Output Text (Encrypted)&quot;,&quot;key&quot;:&quot;label5&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Label&quot;,&quot;type&quot;:&quot;label&quot;,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false},{&quot;label&quot;:&quot;Private Key&quot;,&quot;hideLabel&quot;:true,&quot;tableView&quot;:true,&quot;key&quot;:&quot;textOutput&quot;,&quot;type&quot;:&quot;textarea&quot;,&quot;rows&quot;:13,&quot;input&quot;:true,&quot;hideOnChildrenHidden&quot;:false,&quot;calculateServer&quot;:false,&quot;spellcheck&quot;:true,&quot;fixedSize&quot;:true}],&quot;width&quot;:6,&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0,&quot;size&quot;:&quot;md&quot;}],&quot;tableView&quot;:false,&quot;key&quot;:&quot;columns2&quot;,&quot;type&quot;:&quot;columns&quot;,&quot;calculateServer&quot;:false,&quot;input&quot;:false,&quot;label&quot;:&quot;Columns&quot;}]}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100240&quot;,&quot;Name&quot;:&quot;Slate&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/slate.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/slate.png&quot;,&quot;OverrideCssUrl&quot;:&quot;&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormWidth="1162" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="748,1708" sap2010:WorkflowViewState.IdRef="FormActivity_1" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="True" RunInIsolatedMode="False" SelectedButton="[button]" StartAsMinimized="False">
+      <ufa:FormActivity.Body>
+        <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="710,1581" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="Generate Key Pairs" sap:VirtualizedContainerService.HintSize="648,1470" sap2010:WorkflowViewState.IdRef="Sequence_6">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[button]" sap:VirtualizedContainerService.HintSize="586,1359" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence x:Key="submit" sap:VirtualizedContainerService.HintSize="546,1152" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence sap:VirtualizedContainerService.HintSize="484,502" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <upa:EncryptFile DisplayName="Encrypt File (Encrypt_File)" FileIn="[FileInput]" FileOut="[FileEncrypted]" FilePublicKey="[FilePublicKey]" sap:VirtualizedContainerService.HintSize="338,186" sap2010:WorkflowViewState.IdRef="EncryptFile_1" Overwrite="True" Result="[Result]" Status="[status]" />
+                    <ui:InvokeCode ContinueOnError="{x:Null}" Code="If (Not result) Then&#xA;&#x9;status = &quot;Process Failed&quot;&#xA;&#x9;console.WriteLine(status)&#xA;&#x9;Return&#xA;End If&#xA;&#xA;If (Not System.io.File.Exists(FileOut)) Then&#xA;&#x9;status = &quot;Failed: File Not Encrypted&quot;&#xA;&#x9;console.WriteLine(status)&#xA;&#x9;Return&#xA;End If&#xA;&#xA;status = &quot;Success: File Encrypted&quot;&#xA;console.WriteLine(status)" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="338,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+                      <ui:InvokeCode.Arguments>
+                        <InArgument x:TypeArguments="x:Boolean" x:Key="result">[Result]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="FilePrivateKey">[FilePrivateKey]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="FilePublicKey">[FilePublicKey]</InArgument>
+                        <InOutArgument x:TypeArguments="x:String" x:Key="status">[status]</InOutArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="FIleOut">[FileEncrypted]</InArgument>
+                      </ui:InvokeCode.Arguments>
+                    </ui:InvokeCode>
+                  </Sequence>
+                  <If Condition="[Result]" sap:VirtualizedContainerService.HintSize="484,499" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="446,311" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ReadTextFile File="{x:Null}" Content="[TextInput]" DisplayName="Read Text File" FileName="[FileInput]" sap:VirtualizedContainerService.HintSize="384,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+                        <ui:ReadTextFile File="{x:Null}" Content="[TextOutput]" DisplayName="Read Text File" FileName="[FileEncrypted]" sap:VirtualizedContainerService.HintSize="384,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+                <ui:MultipleAssign x:Key="clear" DisplayName="Default Demo Data" sap:VirtualizedContainerService.HintSize="334,254" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[FileInput]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[FileEncrypted]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[status]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">......</InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[FilePublicKey]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[TextInput]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">[TextOutput]</OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:MultipleAssign>
+              </Switch>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </ufa:FormActivity.Body>
+      <ufa:FormActivity.DelayBody>
+        <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
+          <Delay Duration="00:00:00.2500000" sap2010:WorkflowViewState.IdRef="Delay_1" />
+        </ActivityAction>
+      </ufa:FormActivity.DelayBody>
+      <ufa:FormActivity.FormFieldsCollection>
+        <InOutArgument x:TypeArguments="x:String" x:Key="filePrivateKey">[FilePrivateKey]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="filePublicKey">[FilePublicKey]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="status">[Status]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="fileInput">[FileInput]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="fileOutput">[FileEncrypted]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="textInput">[TextInput]</InOutArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="textOutput">[TextOutput]</InOutArgument>
+      </ufa:FormActivity.FormFieldsCollection>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ufa:FormActivity>
+  </Sequence>
+</Activity>
