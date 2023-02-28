@@ -120,7 +120,7 @@
               <OutArgument x:TypeArguments="x:String">[Email]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">user@email.com</InArgument>
+              <InArgument x:TypeArguments="x:String">user@uipath.com</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
