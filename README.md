@@ -27,3 +27,5 @@ Studio -> Manage Packages -> Community -> (Search) Video Processing -> pick the 
 `Verify Signed Clear File`: Verify a clear signed file was signed by the matching public key
 
 `Verify Signed File`: Verify a file was signed by the matching public key
+
+`Verify Key Validity`: Verify the validity period of a PGP Public Key File

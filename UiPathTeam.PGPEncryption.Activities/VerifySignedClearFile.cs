@@ -60,10 +60,9 @@ namespace UiPathTeam.PGPEncryption.Activities
         {
             if (String.IsNullOrEmpty(Status.Get(context)))
             {
-                var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePublicKey.Get(context))));
-
                 try
                 {
+                    var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePublicKey.Get(context))));
                     Verified.Set(context, pgp.VerifyClearFile(new FileInfo(FileIn.Get(context))));
                     Status.Set(context, Verified.Get(context) ? "Clear Signed File Verification Successful" : "Clear Signed File Verification Failed");
                     Console.WriteLine(Status.Get(context));

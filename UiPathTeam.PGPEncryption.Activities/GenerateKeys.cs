@@ -83,10 +83,9 @@ namespace UiPathTeam.PGPEncryption.Activities
         {
             if (String.IsNullOrEmpty(Status.Get(context)))
             {
-                var pgp = new PGP();
-
                 try
                 {
+                    var pgp = new PGP();
                     pgp.GenerateKey(FilePublicKey.Get(context), FilePrivateKey.Get(context), Identity.Get(context), Passphrase.Get(context));
                     if (File.Exists(FilePublicKey.Get(context)) && File.Exists(FilePrivateKey.Get(context)))
                     {

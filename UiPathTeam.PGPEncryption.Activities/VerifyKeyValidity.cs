@@ -6,24 +6,20 @@ using System.IO;
 
 namespace UiPathTeam.PGPEncryption.Activities
 {
-    [DisplayName("Verify Signed File"), Description("Verify a file was signed by the matching public key")]
-    public class VerifySignedFile : NativeActivity
+    [DisplayName("Verify Key Validity"), Description("Verify the validity period of a PGP Public Key File")]
+    public class VerifyKeyValidity : NativeActivity
     {
 
         #region Properties
-
-        [Category("Input"), Description("The input signed file")]
-        [RequiredArgument]
-        public InArgument<String> FileIn { get; set; }
 
         [Category("Input"), Description("File path to read in the Public Key")]
         [RequiredArgument]
         public InArgument<String> FilePublicKey { get; set; }
 
-        [Category("Output"), Description("True if Signature matches with Public Key")]
+        [Category("Output"), Description("True if Public Key is valid")]
         public OutArgument<Boolean> Verified { get; set; }
 
-        [Category("Output"), Description("Status codes or errors that were encountered during the Process")]
+        [Category("Output"), Description("Public Key expiration date or errors that were encountered during the Process")]
         public OutArgument<String> Status { get; set; }
 
         #endregion
@@ -45,8 +41,6 @@ namespace UiPathTeam.PGPEncryption.Activities
         {
             try
             {
-                Utilities.ValidateFileIn(FileIn.Get(context));
-
                 Utilities.ValidatePublicKey(FilePublicKey.Get(context));
             }
             catch (Exception ex)
@@ -63,13 +57,30 @@ namespace UiPathTeam.PGPEncryption.Activities
                 try
                 {
                     var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePublicKey.Get(context))));
-                    Verified.Set(context, pgp.VerifyFile(new FileInfo(FileIn.Get(context))));
-                    Status.Set(context, Verified.Get(context) ? "Signed File Verification Successful" : "Signed File Verification Failed");
+                    long ValiditySeconds = pgp.EncryptionKeys.MasterKey.GetValidSeconds();
+                    DateTimeOffset expiration = DateTimeOffset.Now.AddSeconds(ValiditySeconds);
+
+                    if (ValiditySeconds > 0)
+                    {
+                        Verified.Set(context, true);
+                        Status.Set(context, "Public Key expires on: " + expiration.ToString("yyyy-MM-dd hh:mm:ss"));
+                    }
+                    else if (ValiditySeconds < 0)
+                    {
+                        Verified.Set(context, false);
+                        Status.Set(context, "Public Key expired on: " + expiration.ToString("yyyy-MM-dd hh:mm:ss"));
+                    }
+                    else
+                    {
+                        Verified.Set(context, true);
+                        Status.Set(context, "Public Key never expires");
+                    }
+
                     Console.WriteLine(Status.Get(context));
                 }
                 catch (Exception ex)
                 {
-                    Status.Set(context, "SignedFile Verification Failed " + Environment.NewLine + ex.Message);
+                    Status.Set(context, "Public Key validition verification Failed " + Environment.NewLine + ex.Message);
                     throw new Exception(Status.Get(context));
                 }
             }
