@@ -58,22 +58,23 @@ namespace UiPathTeam.PGPEncryption.Activities
                 {
                     var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePublicKey.Get(context))));
                     long ValiditySeconds = pgp.EncryptionKeys.MasterKey.GetValidSeconds();
-                    DateTimeOffset expiration = DateTimeOffset.Now.AddSeconds(ValiditySeconds);
+                    DateTimeOffset expiration = new DateTimeOffset(pgp.EncryptionKeys.MasterKey.CreationTime.AddSeconds(ValiditySeconds));
+                    int expire = expiration.CompareTo(DateTimeOffset.Now);
 
-                    if (ValiditySeconds > 0)
+                    if (ValiditySeconds == 0)
+                    {
+                        Verified.Set(context, true);
+                        Status.Set(context, "Public Key never expires");
+                    }
+                    else if (expire > 0)
                     {
                         Verified.Set(context, true);
                         Status.Set(context, "Public Key expires on: " + expiration.ToString("yyyy-MM-dd hh:mm:ss"));
                     }
-                    else if (ValiditySeconds < 0)
+                    else //if (expire < 0)
                     {
                         Verified.Set(context, false);
                         Status.Set(context, "Public Key expired on: " + expiration.ToString("yyyy-MM-dd hh:mm:ss"));
-                    }
-                    else
-                    {
-                        Verified.Set(context, true);
-                        Status.Set(context, "Public Key never expires");
                     }
 
                     Console.WriteLine(Status.Get(context));

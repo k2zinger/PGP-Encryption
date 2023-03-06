@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security;
 
 namespace UiPathTeam.PGPEncryption.Activities
 {
@@ -81,18 +82,23 @@ namespace UiPathTeam.PGPEncryption.Activities
             }
         }
 
-        public static void ValidatePassphrase(string Passphrase)
+        public static string ValidatePassphrase(string Passphrase, SecureString SecurePassphrase)
         {
-            /*
-            if (String.IsNullOrEmpty(Passphrase) || Passphrase.Trim().Length == 0)
+            if (SecurePassphrase != null && SecurePassphrase.Length > 0)
             {
-                throw new Exception("Valid Passphrase required: " + Passphrase);
+                Console.WriteLine("Using SecurePassphrase");
+                return new System.Net.NetworkCredential(string.Empty, SecurePassphrase).Password;
+            }
+            else if (String.IsNullOrEmpty(Passphrase))
+            {
+                Console.WriteLine("Passphrase not specified");
+                return "";
             }
             else
             {
-                Console.WriteLine("Passphrase: " + Passphrase);
+                Console.WriteLine("Using Passphrase");
+                return Passphrase;
             }
-            */
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System;
 using System.Activities;
 using System.ComponentModel;
 using System.IO;
+using System.Security;
 
 namespace UiPathTeam.PGPEncryption.Activities
 {
@@ -14,7 +15,7 @@ namespace UiPathTeam.PGPEncryption.Activities
 
         [Category("Input"), Description("The output signed file")]
         [RequiredArgument]
-        public InArgument<String> FileOut { get; set; }
+        public virtual InArgument<String> FileOut { get; set; }
 
         [Category("Input"), Description("The input file to sign")]
         [RequiredArgument]
@@ -25,7 +26,12 @@ namespace UiPathTeam.PGPEncryption.Activities
         public InArgument<String> FilePrivateKey { get; set; }
 
         [Category("Input"), Description("Passphrase is a word or phrase used to decrypt your private key on your machine")]
+        [OverloadGroup("Passphrase")] 
         public InArgument<String> Passphrase { get; set; }
+
+        [Category("Input"), Description("SecureString Passphrase is a word or phrase used to decrypt your private key on your machine")]
+        [OverloadGroup("SecurePassphrase")]
+        public InArgument<SecureString> SecurePassphrase { get; set; }
 
         [Category("Input"), Description("Overwrite output files.  Default: False")]
         public InArgument<Boolean> Overwrite { get; set; }
@@ -35,6 +41,9 @@ namespace UiPathTeam.PGPEncryption.Activities
 
         [Category("Output"), Description("Status codes or errors that were encountered during the Process")]
         public OutArgument<String> Status { get; set; }
+
+        [Browsable(false)]
+        protected string Password;
 
         #endregion
 
@@ -61,7 +70,7 @@ namespace UiPathTeam.PGPEncryption.Activities
 
                 Utilities.ValidatePrivateKey(FilePrivateKey.Get(context));
 
-                Utilities.ValidatePassphrase(Passphrase.Get(context));
+                Password = Utilities.ValidatePassphrase(Passphrase.Get(context), SecurePassphrase.Get(context));
             }
             catch (Exception ex)
             {
@@ -70,13 +79,13 @@ namespace UiPathTeam.PGPEncryption.Activities
             }
         }
 
-        public void ExecuteJob(NativeActivityContext context)
+        public virtual void ExecuteJob(NativeActivityContext context)
         {
             if (String.IsNullOrEmpty(Status.Get(context)))
             {
                 try
                 {
-                    var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePrivateKey.Get(context)), Passphrase.Get(context)));
+                    var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePrivateKey.Get(context)), Password));
                     pgp.SignFile(new FileInfo(FileIn.Get(context)), new FileInfo(FileOut.Get(context)), true);
                     if (File.Exists(FileOut.Get(context)))
                     {

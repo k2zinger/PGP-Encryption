@@ -14,7 +14,7 @@ namespace UiPathTeam.PGPEncryption.Activities
 
         [Category("Input"), Description("The input signed file")]
         [RequiredArgument]
-        public InArgument<String> FileIn { get; set; }
+        public virtual InArgument<String> FileIn { get; set; }
 
         [Category("Input"), Description("File path to read in the Public Key")]
         [RequiredArgument]
@@ -56,7 +56,7 @@ namespace UiPathTeam.PGPEncryption.Activities
             }
         }
 
-        public void ExecuteJob(NativeActivityContext context)
+        public virtual void ExecuteJob(NativeActivityContext context)
         {
             if (String.IsNullOrEmpty(Status.Get(context)))
             {

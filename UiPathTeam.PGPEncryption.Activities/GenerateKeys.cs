@@ -3,6 +3,7 @@ using System;
 using System.Activities;
 using System.ComponentModel;
 using System.IO;
+using System.Security;
 
 namespace UiPathTeam.PGPEncryption.Activities
 {
@@ -21,7 +22,12 @@ namespace UiPathTeam.PGPEncryption.Activities
         public InArgument<String> FilePrivateKey { get; set; }
 
         [Category("Input"), Description("Passphrase is a word or phrase used to encrypt your private key on your machine")]
+        [OverloadGroup("Passphrase")]
         public InArgument<String> Passphrase { get; set; }
+
+        [Category("Input"), Description("SecureString Passphrase is a word or phrase used to encrypt your private key on your machine")]
+        [OverloadGroup("SecurePassphrase")]
+        public InArgument<SecureString> SecurePassphrase { get; set; }
 
         [Category("Input"), Description("Recipient email address")]
         [RequiredArgument]
@@ -35,6 +41,8 @@ namespace UiPathTeam.PGPEncryption.Activities
 
         [Category("Output"), Description("Status codes or errors that were encountered during the Process")]
         public OutArgument<String> Status { get; set; }
+
+        private string Password;
 
         #endregion
 
@@ -59,7 +67,7 @@ namespace UiPathTeam.PGPEncryption.Activities
 
                 Utilities.ValidateDirectory(FilePrivateKey.Get(context), "FilePrivateKey", Overwrite.Get(context));
 
-                Utilities.ValidatePassphrase(Passphrase.Get(context));
+                Password = Utilities.ValidatePassphrase(Passphrase.Get(context), SecurePassphrase.Get(context));
 
                 if (String.IsNullOrEmpty(Identity.Get(context)) || !System.Text.RegularExpressions.Regex.IsMatch(Identity.Get(context), "(?i)[A-Z0-9+_.-]+@(?:.*).(?:.*)"))
                 {
@@ -86,7 +94,7 @@ namespace UiPathTeam.PGPEncryption.Activities
                 try
                 {
                     var pgp = new PGP();
-                    pgp.GenerateKey(FilePublicKey.Get(context), FilePrivateKey.Get(context), Identity.Get(context), Passphrase.Get(context), 2048);
+                    pgp.GenerateKey(FilePublicKey.Get(context), FilePrivateKey.Get(context), Identity.Get(context), Password, 2048);
                     if (File.Exists(FilePublicKey.Get(context)) && File.Exists(FilePrivateKey.Get(context)))
                     {
                         Result.Set(context, true);

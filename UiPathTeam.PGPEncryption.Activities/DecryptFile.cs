@@ -3,6 +3,7 @@ using System;
 using System.Activities;
 using System.ComponentModel;
 using System.IO;
+using System.Security;
 
 namespace UiPathTeam.PGPEncryption.Activities
 {
@@ -25,7 +26,12 @@ namespace UiPathTeam.PGPEncryption.Activities
         public InArgument<String> FilePrivateKey { get; set; }
 
         [Category("Input"), Description("Passphrase is a word or phrase used to decrypt your private key on your machine")]
+        [OverloadGroup("Passphrase")]
         public InArgument<String> Passphrase { get; set; }
+
+        [Category("Input"), Description("SecureString Passphrase is a word or phrase used to decrypt your private key on your machine")]
+        [OverloadGroup("SecurePassphrase")]
+        public InArgument<SecureString> SecurePassphrase { get; set; }
 
         [Category("Input"), Description("Overwrite output files.  Default: False")]
         public InArgument<Boolean> Overwrite { get; set; }
@@ -35,6 +41,8 @@ namespace UiPathTeam.PGPEncryption.Activities
 
         [Category("Output"), Description("Status codes or errors that were encountered during the Process")]
         public OutArgument<String> Status { get; set; }
+
+        private string Password;
 
         #endregion
 
@@ -61,7 +69,7 @@ namespace UiPathTeam.PGPEncryption.Activities
 
                 Utilities.ValidatePrivateKey(FilePrivateKey.Get(context));
 
-                Utilities.ValidatePassphrase(Passphrase.Get(context));
+                Password = Utilities.ValidatePassphrase(Passphrase.Get(context), SecurePassphrase.Get(context));
             }
             catch (Exception ex)
             {
@@ -76,7 +84,7 @@ namespace UiPathTeam.PGPEncryption.Activities
             {
                 try
                 {
-                    var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePrivateKey.Get(context)), Passphrase.Get(context)));
+                    var pgp = new PGP(new EncryptionKeys(new FileInfo(FilePrivateKey.Get(context)), Password));
                     pgp.DecryptFile(new FileInfo(FileIn.Get(context)), new FileInfo(FileOut.Get(context)));
                     if (File.Exists(FileOut.Get(context)))
                     {

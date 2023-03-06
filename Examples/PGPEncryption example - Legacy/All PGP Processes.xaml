@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Encrypt_a_File_Example" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2434,950" sap2010:WorkflowViewState.IdRef="Encrypt_a_File_Example_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upa="clr-namespace:UiPathTeam.PGPEncryption.Activities;assembly=UiPathTeam.PGPEncryption.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Encrypt_a_File_Example" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1822,950" sap2010:WorkflowViewState.IdRef="Encrypt_a_File_Example_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upa="clr-namespace:UiPathTeam.PGPEncryption.Activities;assembly=UiPathTeam.PGPEncryption.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="76">
       <x:String>System.Activities</x:String>
@@ -81,7 +81,6 @@
       <AssemblyReference>PgpCore</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap:VirtualizedContainerService.HintSize="634,885" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -91,11 +90,7 @@
       <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\lib\private.key&quot;]" Name="FilePrivateKey" />
       <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\lib\public.key&quot;]" Name="FilePublicKey" />
       <Variable x:TypeArguments="x:Boolean" Default="False" Name="errors" />
-      <Variable x:TypeArguments="x:String" Name="FileInput">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="environment.CurrentDirectory+&quot;\Data\Input\raw.txt&quot;" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\Data\Input\raw.txt&quot;]" Name="FileInput" />
       <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\data\encrypted.pgp&quot;]" Name="FileEncrypted" />
       <Variable x:TypeArguments="x:String" Default="[environment.CurrentDirectory+&quot;\data\decrypted.txt&quot;]" Name="FileDecrypted" />
       <Variable x:TypeArguments="x:String" Name="button" />
@@ -130,7 +125,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,205.5 300,255.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:MultipleAssign DisplayName="Demo Data" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+      <ui:MultipleAssign DisplayName="Demo Data" sap:VirtualizedContainerService.HintSize="431,442" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
         <ui:MultipleAssign.AssignOperations>
           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
@@ -146,7 +141,7 @@
                 <OutArgument x:TypeArguments="x:String">[Email]</OutArgument>
               </ui:AssignOperation.To>
               <ui:AssignOperation.Value>
-                <InArgument x:TypeArguments="x:String">user@email.com</InArgument>
+                <InArgument x:TypeArguments="x:String">user@uipath.com</InArgument>
               </ui:AssignOperation.Value>
             </ui:AssignOperation>
             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
@@ -262,7 +257,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">300,408.5 300,428.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <upa:GenerateKeys DisplayName="Generate Keys (Generate_Keys)" FilePrivateKey="[FilePrivateKey]" FilePublicKey="[FilePublicKey]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="GenerateKeys_1" Identity="[Email]" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
+              <upa:GenerateKeys SecurePassphrase="{x:Null}" DisplayName="Generate Keys (Generate_Keys)" FilePrivateKey="[FilePrivateKey]" FilePublicKey="[FilePublicKey]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="GenerateKeys_1" Identity="[Email]" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
               <FlowStep.Next>
                 <FlowStep x:Name="__ReferenceID2">
                   <sap:WorkflowViewStateService.ViewState>
@@ -294,7 +289,7 @@
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <upa:DecryptFile DisplayName="Decrypt File (Decrypt_File)" FileIn="[FileEncrypted]" FileOut="[FileDecrypted]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="338,186" sap2010:WorkflowViewState.IdRef="DecryptFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
+                              <upa:DecryptFile SecurePassphrase="{x:Null}" DisplayName="Decrypt File (Decrypt_File)" FileIn="[FileEncrypted]" FileOut="[FileDecrypted]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="338,186" sap2010:WorkflowViewState.IdRef="DecryptFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
                             </Sequence>
                           </If.Then>
                           <If.Else>
@@ -341,7 +336,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <upa:SignFile DisplayName="Sign File (Sign_File)" FileIn="[FileInput]" FileOut="[FIleSigned]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="484,186" sap2010:WorkflowViewState.IdRef="SignFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
+                            <upa:SignFile SecurePassphrase="{x:Null}" DisplayName="Sign File (Sign_File)" FileIn="[FileInput]" FileOut="[FIleSigned]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="484,186" sap2010:WorkflowViewState.IdRef="SignFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
                             <If Condition="[Result]" sap:VirtualizedContainerService.HintSize="484,432" sap2010:WorkflowViewState.IdRef="If_4">
                               <If.Then>
                                 <Sequence sap:VirtualizedContainerService.HintSize="400,244" sap2010:WorkflowViewState.IdRef="Sequence_21">
@@ -397,7 +392,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <upa:SignClearFile DisplayName="Sign Clear File (Sign_Clear_File)" FileIn="[FileInput]" FileOut="[FileClearSigned]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="484,186" sap2010:WorkflowViewState.IdRef="SignClearFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
+                                <upa:SignClearFile SecurePassphrase="{x:Null}" DisplayName="Sign Clear File (Sign_Clear_File)" FileIn="[FileInput]" FileOut="[FileClearSigned]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="484,186" sap2010:WorkflowViewState.IdRef="SignClearFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
                                 <If Condition="[Result]" sap:VirtualizedContainerService.HintSize="484,432" sap2010:WorkflowViewState.IdRef="If_6">
                                   <If.Then>
                                     <Sequence sap:VirtualizedContainerService.HintSize="400,244" sap2010:WorkflowViewState.IdRef="Sequence_25">
@@ -452,7 +447,7 @@
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <upa:EncryptAndSignFile DisplayName="Encrypt and Sign File (Encrypt_and_Sign_File)" FileIn="[FileInput]" FileOut="[FileEncryptedSigned]" FilePrivateKey="[FilePrivateKey]" FilePublicKey="[FilePublicKey]" sap:VirtualizedContainerService.HintSize="484,239" sap2010:WorkflowViewState.IdRef="EncryptAndSignFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
+                                    <upa:EncryptAndSignFile SecurePassphrase="{x:Null}" DisplayName="Encrypt and Sign File (Encrypt_and_Sign_File)" FileIn="[FileInput]" FileOut="[FileEncryptedSigned]" FilePrivateKey="[FilePrivateKey]" FilePublicKey="[FilePublicKey]" sap:VirtualizedContainerService.HintSize="484,239" sap2010:WorkflowViewState.IdRef="EncryptAndSignFile_1" Overwrite="True" Passphrase="[passphrase]" Result="[Result]" Status="[status]" />
                                     <If Condition="[Result]" sap:VirtualizedContainerService.HintSize="484,538" sap2010:WorkflowViewState.IdRef="If_8">
                                       <If.Then>
                                         <Sequence sap:VirtualizedContainerService.HintSize="400,350" sap2010:WorkflowViewState.IdRef="Sequence_29">
@@ -461,7 +456,7 @@
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
-                                          <upa:DecryptAndVerifyFile DisplayName="Decrypt and Verify File (Decrypt_and_Verify_File)" FileIn="[FileEncryptedSigned]" FileOut="[FileDecryptedVerified]" FilePrivateKey="[FilePrivateKey]" FilePublicKey="[FilePublicKey]" sap:VirtualizedContainerService.HintSize="338,239" sap2010:WorkflowViewState.IdRef="DecryptAndVerifyFile_1" Overwrite="True" Passphrase="[passphrase]" Status="[status]" Verified="[Verified]" />
+                                          <upa:DecryptAndVerifyFile SecurePassphrase="{x:Null}" DisplayName="Decrypt and Verify File (Decrypt_and_Verify_File)" FileIn="[FileEncryptedSigned]" FileOut="[FileDecryptedVerified]" FilePrivateKey="[FilePrivateKey]" FilePublicKey="[FilePublicKey]" sap:VirtualizedContainerService.HintSize="338,239" sap2010:WorkflowViewState.IdRef="DecryptAndVerifyFile_1" Overwrite="True" Passphrase="[passphrase]" Status="[status]" Verified="[Verified]" />
                                         </Sequence>
                                       </If.Then>
                                       <If.Else>

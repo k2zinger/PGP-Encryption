@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Simple_3___Decrypt" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="2128,1047" sap2010:WorkflowViewState.IdRef="Simple_3___Decrypt_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upa="clr-namespace:UiPathTeam.PGPEncryption.Activities;assembly=UiPathTeam.PGPEncryption.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Simple_3___Decrypt" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1182,1256" sap2010:WorkflowViewState.IdRef="Simple_3___Decrypt_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upa="clr-namespace:UiPathTeam.PGPEncryption.Activities;assembly=UiPathTeam.PGPEncryption.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="28">
+    <scg:List x:TypeArguments="x:String" Capacity="56">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -29,10 +29,13 @@
       <x:String>System.Runtime.InteropServices</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>UiPathTeam.PGPEncryption.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Security</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -61,9 +64,13 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Decrypt" sap:VirtualizedContainerService.HintSize="400,982" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Decrypt" sap:VirtualizedContainerService.HintSize="493,1191" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FilePrivateKey" />
       <Variable x:TypeArguments="x:String" Name="FilePublicKey" />
@@ -75,13 +82,14 @@
       <Variable x:TypeArguments="x:String" Name="FileOut" />
       <Variable x:TypeArguments="x:String" Name="FolderKeys" />
       <Variable x:TypeArguments="x:String" Name="status" />
+      <Variable x:TypeArguments="ss:SecureString" Name="SecurePassphrase" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="338,192" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,194" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -119,7 +127,7 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="338,161" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
@@ -149,8 +157,15 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Output Folder" sap:VirtualizedContainerService.HintSize="338,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[FolderOutput]" />
-    <upa:DecryptFile DisplayName="Decrypt File (Decrypt_File)" FileIn="[FileIn]" FileOut="[FileOut]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="338,186" sap2010:WorkflowViewState.IdRef="DecryptFile_1" Overwrite="True" Passphrase="[Passphrase]" Result="[Result]" Status="[status]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[status]" />
+    <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Output Folder" sap:VirtualizedContainerService.HintSize="431,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[FolderOutput]" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="SecurePassphrase = New SecureString()&#xD;&#xA;For Each c In &quot;password&quot;.ToCharArray()&#xD;&#xA;&#x9;SecurePassphrase.AppendChar(c)&#xD;&#xA;Next" DisplayName="Invoke Code" sap:VirtualizedContainerService.HintSize="431,165" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <OutArgument x:TypeArguments="ss:SecureString" x:Key="SecurePassphrase">
+          <VisualBasicReference x:TypeArguments="ss:SecureString" ExpressionText="SecurePassphrase" />
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <upa:DecryptFile Passphrase="{x:Null}" DisplayName="Decrypt File (Decrypt_File)" FileIn="[FileIn]" FileOut="[FileOut]" FilePrivateKey="[FilePrivateKey]" sap:VirtualizedContainerService.HintSize="431,186" sap2010:WorkflowViewState.IdRef="DecryptFile_1" Overwrite="True" Result="[Result]" SecurePassphrase="[SecurePassphrase]" Status="[status]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[status]" />
   </Sequence>
 </Activity>

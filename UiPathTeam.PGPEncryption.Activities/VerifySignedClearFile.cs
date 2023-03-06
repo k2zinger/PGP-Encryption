@@ -7,56 +7,20 @@ using System.IO;
 namespace UiPathTeam.PGPEncryption.Activities
 {
     [DisplayName("Verify Signed Clear File"), Description("Verify a clear signed file was signed by the matching public key")]
-    public class VerifySignedClearFile : NativeActivity
+    public class VerifySignedClearFile : VerifySignedFile
     {
 
         #region Properties
 
         [Category("Input"), Description("The input clear signed file")]
         [RequiredArgument]
-        public InArgument<String> FileIn { get; set; }
-
-        [Category("Input"), Description("File path to read in the Public Key")]
-        [RequiredArgument]
-        public InArgument<String> FilePublicKey { get; set; }
-
-        [Category("Output"), Description("True if Signature matches with Public Key")]
-        public OutArgument<Boolean> Verified { get; set; }
-
-        [Category("Output"), Description("Status codes or errors that were encountered during the Process")]
-        public OutArgument<String> Status { get; set; }
+        public override InArgument<String> FileIn { get; set; }
 
         #endregion
 
         #region CodeActivity
 
-        protected override void Execute(NativeActivityContext context)
-        {
-            ValidateParameters(context);
-
-            ExecuteJob(context);
-        }
-
-        #endregion
-
-        #region HelperMethods
-
-        public void ValidateParameters(NativeActivityContext context)
-        {
-            try
-            {
-                Utilities.ValidateFileIn(FileIn.Get(context));
-
-                Utilities.ValidatePublicKey(FilePublicKey.Get(context));
-            }
-            catch (Exception ex)
-            {
-                Status.Set(context, ex.Message);
-                Console.WriteLine(ex);
-            }
-        }
-
-        public void ExecuteJob(NativeActivityContext context)
+        public override void ExecuteJob(NativeActivityContext context)
         {
             if (String.IsNullOrEmpty(Status.Get(context)))
             {
