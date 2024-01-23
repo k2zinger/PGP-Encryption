@@ -3,10 +3,10 @@
   "description": "PGPEncryption example - Legacy",
   "main": "All PGP Processes.xaml",
   "dependencies": {
-    "UiPath.Form.Activities": "[2.0.3]",
-    "UiPath.System.Activities": "[22.10.4]",
-    "UiPath.UIAutomation.Activities": "[22.10.5]",
-    "UiPathTeam.PGPEncryption.Activities": "[1.0.6]"
+    "UiPath.Form.Activities": "[2.0.7]",
+    "UiPath.System.Activities": "[23.10.3]",
+    "UiPath.UIAutomation.Activities": "[23.10.8]",
+    "UiPathTeam.PGPEncryption.Activities": "[1.0.7]"
   },
   "webServices": [],
   "entitiesStores": [],

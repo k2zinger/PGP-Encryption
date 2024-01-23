@@ -7,7 +7,7 @@ Use the PGPCore library to securely send, share, store, and verify sensitive dat
 
 
 ## Installation
-Studio -> Manage Packages -> Community -> (Search) Video Processing -> pick the package(s) to install and click Install -> Save
+Studio -> Manage Packages -> Community -> (Search) PGP Encryption -> pick the package(s) to install and click Install -> Save
 
 ## Activities
 `Decrypt and Verify File`: Decrypt a file using the provided private key and passphrase, then verify the file was signed by the matching public key
@@ -18,7 +18,7 @@ Studio -> Manage Packages -> Community -> (Search) Video Processing -> pick the 
 
 `Encrypt File`: Encrypt a file using the provided public key
 
-`Generate Keys`: Generate a new public and private key for the provided Identity and passphrase
+`Generate Keys`: Generate a new public and private key for the provided Identity and passphrase.  Key Size can also be specified (e.g. 1024, 2048, or 4096)
 
 `Sign File`: Cryptographically signs a file
 

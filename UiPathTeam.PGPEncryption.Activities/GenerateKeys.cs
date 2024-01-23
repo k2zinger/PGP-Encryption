@@ -29,6 +29,9 @@ namespace UiPathTeam.PGPEncryption.Activities
         [OverloadGroup("SecurePassphrase")]
         public InArgument<SecureString> SecurePassphrase { get; set; }
 
+        [Category("Input"), Description("Key size.  Default: 2048")]
+        public InArgument<int> KeySize { get; set; } = new InArgument<int>(2048);
+
         [Category("Input"), Description("Recipient email address")]
         [RequiredArgument]
         public InArgument<String> Identity { get; set; }
@@ -94,7 +97,7 @@ namespace UiPathTeam.PGPEncryption.Activities
                 try
                 {
                     var pgp = new PGP();
-                    pgp.GenerateKey(FilePublicKey.Get(context), FilePrivateKey.Get(context), Identity.Get(context), Password, 2048);
+                    pgp.GenerateKey(new FileInfo(FilePublicKey.Get(context)), new FileInfo(FilePrivateKey.Get(context)), Identity.Get(context), Password, KeySize.Get(context));
                     if (File.Exists(FilePublicKey.Get(context)) && File.Exists(FilePrivateKey.Get(context)))
                     {
                         Result.Set(context, true);
