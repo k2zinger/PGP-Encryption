@@ -1,0 +1,153 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <TargetFrameworks>net461;net6.0-windows7.0</TargetFrameworks>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>UiPathTeam.PGPEncryption.Activities.Design</RootNamespace>
+    <AssemblyName>UiPathTeam.PGPEncryption.Activities.Design</AssemblyName>
+    <PackageId>UiPathTeam.PGPEncryption.Activities</PackageId>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+  </PropertyGroup>
+  <!-- Package Metadata -->
+  <PropertyGroup>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://www.uipath.com/hubfs/legalspot/UiPath_Activity_License_Agreement.pdf</PackageLicenseUrl>
+    <Description>Generate PGP Keys, Encrypt, Decrypt, Sign, and Verify files.</Description>
+    <Authors>UiPath</Authors>
+    <Company>UiPath</Company>
+    <Copyright>© $([System.DateTime]::UtcNow.ToString(yyyy)) UiPath</Copyright>
+    <PackageTags>UiPath PGP Keys Encrypt Decrypt Sign Verify Files</PackageTags>
+    <PackageProjectUrl>https://marketplace.uipath.com/listings/pgp-encryption</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/NuGet/Samples/master/PackageIconNuspecExample/icon.png</PackageIconUrl>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+	<Version Condition="'$(version)' == ''">0.0.0</Version>
+  </PropertyGroup>
+  <!-- Package Versions -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug' AND '$(DesignTimeBuild)' != 'true'">
+    <PackageVersion>0.1.0.$([System.DateTime]::UtcNow.ToString(MMddHHmmss))-dev</PackageVersion>
+  </PropertyGroup>
+  <!-- ignore build warnings -->
+  <PropertyGroup>
+    <NoWarn>CS1701;CS1702;CA1416;CS1572;CS1573;CS1591;CS1998</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Designers\DecryptAndVerifyFileDesigner.xaml" />
+    <None Remove="Designers\DecryptFileDesigner.xaml" />
+    <None Remove="Designers\EncryptAndSignFileDesigner.xaml" />
+    <None Remove="Designers\EncryptFileDesigner.xaml" />
+    <None Remove="Designers\GenerateKeysDesigner.xaml" />
+    <None Remove="Designers\SignFileDesigner.xaml" />
+    <None Remove="Designers\SignClearFileDesigner.xaml" />
+    <None Remove="Designers\VerifyKeyValidityDesigner.xaml" />
+    <None Remove="Designers\VerifySignedClearFileDesigner.xaml" />
+    <None Remove="Designers\VerifySignedFileDesigner.xaml" />
+  </ItemGroup>
+  <!-- Package Icon -->
+  <ItemGroup>
+    <None Include="packageIcon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+  <Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+    <ItemGroup>
+      <!--Filter out unnecessary files-->
+      <_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'All'))" />
+    </ItemGroup>
+
+    <!--Print batches for debug purposes-->
+    <Message Text="Batch for .nupkg: ReferenceCopyLocalPaths = @(_ReferenceCopyLocalPaths), ReferenceCopyLocalPaths.DestinationSubDirectory = %(_ReferenceCopyLocalPaths.DestinationSubDirectory) Filename = %(_ReferenceCopyLocalPaths.Filename) Extension = %(_ReferenceCopyLocalPaths.Extension)" Importance="High" Condition="'@(_ReferenceCopyLocalPaths)' != ''" />
+
+    <ItemGroup>
+      <!--Add file to package with consideration of sub folder. If empty, the root folder is chosen.-->
+      <BuildOutputInPackage Include="@(_ReferenceCopyLocalPaths)" TargetPath="%(_ReferenceCopyLocalPaths.DestinationSubDirectory)" />
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <DocumentationFile>bin\$(Configuration)\UiPathTeam.PGPEncryption.Activities.Design.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Core.Presentation" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0-windows7.0' ">
+    <PackageReference Include="UiPath.Workflow.Runtime" Version="6.0.0-*" PrivateAssets="All" />
+    <PackageReference Include="UiPath.Workflow" Version="6.0.0-*" PrivateAssets="All" />
+    <PackageReference Include="System.Activities.Core.Presentation" Version="6.0.0-*" PrivateAssets="All" />
+    <PackageReference Include="System.Activities.Metadata" Version="6.0.0-*" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="PgpCore" Version="6.3.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\..\Shared\Themes\Generic.xaml">
+      <Link>Themes\Generic.xaml</Link>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Designers\DecryptAndVerifyFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\DecryptFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\EncryptAndSignFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\EncryptFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\GenerateKeysDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\SignFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\SignClearFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\VerifyKeyValidityDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\VerifySignedClearFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Designers\VerifySignedFileDesigner.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Themes\Icons.xaml">
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UiPathTeam.PGPEncryption.Activities\UiPathTeam.PGPEncryption.Activities.csproj" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.*.resx">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="..\..\Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.projitems" Label="Shared" />
+</Project>

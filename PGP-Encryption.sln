@@ -1,11 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.3.32929.385
+VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UiPathTeam.PGPEncryption.Activities", "UiPathTeam.PGPEncryption.Activities", "{4BE4DBCE-DE8D-4B1B-A3FB-A2829C68AB47}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UiPathTeam.PGPEncryption", "UiPathTeam.PGPEncryption", "{5F2C29B9-8A5A-4A10-8C70-1B0D9F9C9291}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PGP-Encryption", "UiPathTeam.PGPEncryption.Activities\PGP-Encryption.csproj", "{6BAFF429-5F38-4ED5-A1F1-C8AFB03248FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPathTeam.PGPEncryption", "UiPathTeam.PGPEncryption\UiPathTeam.PGPEncryption\UiPathTeam.PGPEncryption.csproj", "{C8193B49-DD38-48C7-AA26-73384B1186C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPathTeam.PGPEncryption.Activities", "UiPathTeam.PGPEncryption\UiPathTeam.PGPEncryption.Activities\UiPathTeam.PGPEncryption.Activities.csproj", "{B398B170-70FE-4693-BD5F-6B96CABB5D9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPathTeam.PGPEncryption.Activities.Design", "UiPathTeam.PGPEncryption\UiPathTeam.PGPEncryption.Activities.Design\UiPathTeam.PGPEncryption.Activities.Design.csproj", "{6486D5A9-0FE4-4010-8AEC-6480B578A26F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{299394F5-FE45-4E64-858F-13EDB5F235CC}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UiPath.Shared.Activities", "Shared\UiPath.Shared.Activities\UiPath.Shared.Activities.shproj", "{4546856D-EA50-45C6-9419-EEEACB5A80AA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "UiPath.Shared.Activities.Design", "Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.shproj", "{DF9C43F0-ADD3-4FBF-995E-84B92F9CBF25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,18 +23,36 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6BAFF429-5F38-4ED5-A1F1-C8AFB03248FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BAFF429-5F38-4ED5-A1F1-C8AFB03248FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BAFF429-5F38-4ED5-A1F1-C8AFB03248FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BAFF429-5F38-4ED5-A1F1-C8AFB03248FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8193B49-DD38-48C7-AA26-73384B1186C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8193B49-DD38-48C7-AA26-73384B1186C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8193B49-DD38-48C7-AA26-73384B1186C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8193B49-DD38-48C7-AA26-73384B1186C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B398B170-70FE-4693-BD5F-6B96CABB5D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B398B170-70FE-4693-BD5F-6B96CABB5D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B398B170-70FE-4693-BD5F-6B96CABB5D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B398B170-70FE-4693-BD5F-6B96CABB5D9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6486D5A9-0FE4-4010-8AEC-6480B578A26F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6486D5A9-0FE4-4010-8AEC-6480B578A26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6486D5A9-0FE4-4010-8AEC-6480B578A26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6486D5A9-0FE4-4010-8AEC-6480B578A26F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6BAFF429-5F38-4ED5-A1F1-C8AFB03248FE} = {4BE4DBCE-DE8D-4B1B-A3FB-A2829C68AB47}
+		{C8193B49-DD38-48C7-AA26-73384B1186C8} = {5F2C29B9-8A5A-4A10-8C70-1B0D9F9C9291}
+		{B398B170-70FE-4693-BD5F-6B96CABB5D9D} = {5F2C29B9-8A5A-4A10-8C70-1B0D9F9C9291}
+		{6486D5A9-0FE4-4010-8AEC-6480B578A26F} = {5F2C29B9-8A5A-4A10-8C70-1B0D9F9C9291}
+		{4546856D-EA50-45C6-9419-EEEACB5A80AA} = {299394F5-FE45-4E64-858F-13EDB5F235CC}
+		{DF9C43F0-ADD3-4FBF-995E-84B92F9CBF25} = {299394F5-FE45-4E64-858F-13EDB5F235CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {51260C5D-5108-49F3-8575-6B339738DA0E}
+		SolutionGuid = {DE2E799C-5228-4039-AD93-A80A8C7D2393}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Shared\UiPath.Shared.Activities\UiPath.Shared.Activities.projitems*{4546856d-ea50-45c6-9419-eeeacb5a80aa}*SharedItemsImports = 13
+		Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.projitems*{6486d5a9-0fe4-4010-8aec-6480b578a26f}*SharedItemsImports = 5
+		Shared\UiPath.Shared.Activities\UiPath.Shared.Activities.projitems*{b398b170-70fe-4693-bd5f-6b96cabb5d9d}*SharedItemsImports = 5
+		Shared\UiPath.Shared.Activities.Design\UiPath.Shared.Activities.Design.projitems*{df9c43f0-add3-4fbf-995e-84b92f9cbf25}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

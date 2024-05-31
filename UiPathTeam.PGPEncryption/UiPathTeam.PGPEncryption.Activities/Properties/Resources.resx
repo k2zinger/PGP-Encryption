@@ -1,0 +1,724 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ContinueOnError_Description" xml:space="preserve">
+    <value>If set, continue executing the remaining activities even if the current activity has failed.</value>
+    <comment>property description</comment>
+  </data>
+  <data name="ContinueOnError_DisplayName" xml:space="preserve">
+    <value>ContinueOnError</value>
+    <comment>property name</comment>
+  </data>
+  <data name="Timeout_Description" xml:space="preserve">
+    <value>Specifies the amount of time (in milliseconds) to wait for the activity to run before an error is thrown. The default value is 60000 (1 minute).</value>
+    <comment>property description</comment>
+  </data>
+  <data name="Timeout_DisplayName" xml:space="preserve">
+    <value>Timeout (milliseconds)</value>
+    <comment>property name</comment>
+  </data>
+  <data name="Timeout_Error" xml:space="preserve">
+    <value>The activity timed out and was canceled.</value>
+    <comment>error message</comment>
+  </data>
+  <data name="Do" xml:space="preserve">
+    <value>Do</value>
+    <comment>generic</comment>
+  </data>
+  <data name="Common_Category" xml:space="preserve">
+    <value>Common</value>
+    <comment>category</comment>
+  </data>
+  <data name="Authentication_Category" xml:space="preserve">
+    <value>Authentication</value>
+    <comment>category</comment>
+  </data>
+  <data name="Input_Category" xml:space="preserve">
+    <value>Input</value>
+    <comment>category</comment>
+  </data>
+  <data name="Output_Category" xml:space="preserve">
+    <value>Output</value>
+    <comment>category</comment>
+  </data>
+  <data name="Options_Category" xml:space="preserve">
+    <value>Options</value>
+    <comment>category</comment>
+  </data>
+  <data name="ValidationScope_Error" xml:space="preserve">
+    <value>Cannot be used outside of a {0}.</value>
+    <comment>error message; {0} is a container activity (e.g. a scope)</comment>
+  </data>
+  <data name="ValidationValue_Error" xml:space="preserve">
+    <value>Please provide a value for {0}.</value>
+    <comment>error message; {0} is the name of a missing property</comment>
+  </data>
+  <data name="ValidationExclusiveProperties_Error" xml:space="preserve">
+    <value>Please provide a value either for {0} or {1}, but not both.</value>
+    <comment>error message; {0} &amp; {1} are mutually exclusive activities</comment>
+  </data>
+  <data name="ValidationOverloadGroup_Error" xml:space="preserve">
+    <value>Please provide values for both {0} and {1}.</value>
+    <comment>error message; {0} &amp; {1} are complementary properties</comment>
+  </data>
+  <data name="VerifyKeyValidity_DisplayName" xml:space="preserve">
+    <value>Verify Key Validity</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="VerifyKeyValidity_Description" xml:space="preserve">
+    <value>Verify the validity period of a PGP Public Key File</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="VerifyKeyValidity_FilePublicKey_DisplayName" xml:space="preserve">
+    <value>FilePublicKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifyKeyValidity_FilePublicKey_Description" xml:space="preserve">
+    <value>File path to read in the Public Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="VerifyKeyValidity_Verified_DisplayName" xml:space="preserve">
+    <value>Verified</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifyKeyValidity_Verified_Description" xml:space="preserve">
+    <value>True if Public Key is valid</value>
+    <comment>property description</comment>
+  </data>
+  <data name="VerifyKeyValidity_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifyKeyValidity_Status_Description" xml:space="preserve">
+    <value>Public Key expiration date or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+  <data name="VerifySignedFile_DisplayName" xml:space="preserve">
+    <value>Verify Signed File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="VerifySignedFile_Description" xml:space="preserve">
+    <value>Verify a file was signed by the matching public key</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="VerifySignedFile_FileIn_DisplayName" xml:space="preserve">
+    <value>FileIn</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifySignedFile_FileIn_Description" xml:space="preserve">
+    <value>The input signed file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="VerifySignedFile_FilePublicKey_DisplayName" xml:space="preserve">
+    <value>FilePublicKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifySignedFile_FilePublicKey_Description" xml:space="preserve">
+    <value>File path to read in the Public Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="VerifySignedFile_Verified_DisplayName" xml:space="preserve">
+    <value>Verified</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifySignedFile_Verified_Description" xml:space="preserve">
+    <value>True if Signature matches with Public Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="VerifySignedFile_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifySignedFile_Status_Description" xml:space="preserve">
+    <value>Status codes or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+  <data name="VerifySignedClearFile_DisplayName" xml:space="preserve">
+    <value>Verify Signed Clear File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="VerifySignedClearFile_Description" xml:space="preserve">
+    <value>Verify a clear signed file was signed by the matching public key</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="VerifySignedClearFile_FileIn_DisplayName" xml:space="preserve">
+    <value>FileIn</value>
+    <comment>property name</comment>
+  </data>
+  <data name="VerifySignedClearFile_FileIn_Description" xml:space="preserve">
+    <value>The input clear signed file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_DisplayName" xml:space="preserve">
+    <value>Sign File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="SignFile_Description" xml:space="preserve">
+    <value>Cryptographically signs a file</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="SignFile_FileOut_DisplayName" xml:space="preserve">
+    <value>FileOut</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_FileOut_Description" xml:space="preserve">
+    <value>The output signed file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_FileIn_DisplayName" xml:space="preserve">
+    <value>FileIn</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_FileIn_Description" xml:space="preserve">
+    <value>The input file to sign</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_FilePrivateKey_DisplayName" xml:space="preserve">
+    <value>FilePrivateKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_FilePrivateKey_Description" xml:space="preserve">
+    <value>File path to read in the Private Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_Passphrase_DisplayName" xml:space="preserve">
+    <value>Passphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_Passphrase_Description" xml:space="preserve">
+    <value>Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_SecurePassphrase_DisplayName" xml:space="preserve">
+    <value>SecurePassphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_SecurePassphrase_Description" xml:space="preserve">
+    <value>SecureString Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_Overwrite_DisplayName" xml:space="preserve">
+    <value>Overwrite</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_Overwrite_Description" xml:space="preserve">
+    <value>Overwrite output files.  Default: False</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_Result_DisplayName" xml:space="preserve">
+    <value>Result</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_Result_Description" xml:space="preserve">
+    <value>Result of operation.  True if successful</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignFile_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignFile_Status_Description" xml:space="preserve">
+    <value>Status codes or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+  <data name="SignClearFile_DisplayName" xml:space="preserve">
+    <value>Sign Clear File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="SignClearFile_Description" xml:space="preserve">
+    <value>Clear signs a file using the provided private key and passphrase so that it is human readable</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="SignClearFile_FileOut_DisplayName" xml:space="preserve">
+    <value>FileOut</value>
+    <comment>property name</comment>
+  </data>
+  <data name="SignClearFile_FileOut_Description" xml:space="preserve">
+    <value>The clear signed output file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptFile_DisplayName" xml:space="preserve">
+    <value>Encrypt File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="EncryptFile_Description" xml:space="preserve">
+    <value>Encrypt a file using the provided public key</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="EncryptFile_FileOut_DisplayName" xml:space="preserve">
+    <value>FileOut</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptFile_FileOut_Description" xml:space="preserve">
+    <value>The output encrypted file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptFile_FileIn_DisplayName" xml:space="preserve">
+    <value>FileIn</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptFile_FileIn_Description" xml:space="preserve">
+    <value>The input raw text file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptFile_FilePublicKey_DisplayName" xml:space="preserve">
+    <value>FilePublicKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptFile_FilePublicKey_Description" xml:space="preserve">
+    <value>File path to read in the Public Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptFile_Overwrite_DisplayName" xml:space="preserve">
+    <value>Overwrite</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptFile_Overwrite_Description" xml:space="preserve">
+    <value>Overwrite output files.  Default: False</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptFile_Result_DisplayName" xml:space="preserve">
+    <value>Result</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptFile_Result_Description" xml:space="preserve">
+    <value>Result of operation.  True if successful</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptFile_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptFile_Status_Description" xml:space="preserve">
+    <value>Status codes or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_DisplayName" xml:space="preserve">
+    <value>Decrypt File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="DecryptFile_Description" xml:space="preserve">
+    <value>Decrypt a file using the matching private key and passphrase</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="DecryptFile_FileOut_DisplayName" xml:space="preserve">
+    <value>FileOut</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_FileOut_Description" xml:space="preserve">
+    <value>The output decrypted file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_FileIn_DisplayName" xml:space="preserve">
+    <value>FileIn</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_FileIn_Description" xml:space="preserve">
+    <value>The input encrypted file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_FilePrivateKey_DisplayName" xml:space="preserve">
+    <value>FilePrivateKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_FilePrivateKey_Description" xml:space="preserve">
+    <value>File path to read in the Private Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_Passphrase_DisplayName" xml:space="preserve">
+    <value>Passphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_Passphrase_Description" xml:space="preserve">
+    <value>Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_SecurePassphrase_DisplayName" xml:space="preserve">
+    <value>SecurePassphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_SecurePassphrase_Description" xml:space="preserve">
+    <value>SecureString Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_Overwrite_DisplayName" xml:space="preserve">
+    <value>Overwrite</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_Overwrite_Description" xml:space="preserve">
+    <value>Overwrite output files.  Default: False</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_Result_DisplayName" xml:space="preserve">
+    <value>Result</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_Result_Description" xml:space="preserve">
+    <value>Result of operation.  True if successful</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptFile_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptFile_Status_Description" xml:space="preserve">
+    <value>Status codes or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_DisplayName" xml:space="preserve">
+    <value>Generate Keys</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="GenerateKeys_Description" xml:space="preserve">
+    <value>Generate a new public and private key for the provided Identity and passphrase</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="GenerateKeys_FilePublicKey_DisplayName" xml:space="preserve">
+    <value>FilePublicKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_FilePublicKey_Description" xml:space="preserve">
+    <value>File path to store the Public Key. The public key is the key that other people use to encrypt a message that only you can open</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_FilePrivateKey_DisplayName" xml:space="preserve">
+    <value>FilePrivateKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_FilePrivateKey_Description" xml:space="preserve">
+    <value>File path to store the Private Key. The private key is the key that allows you to decrypt the messages sent to you based on your public key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_Passphrase_DisplayName" xml:space="preserve">
+    <value>Passphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_Passphrase_Description" xml:space="preserve">
+    <value>Passphrase is a word or phrase used to encrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_SecurePassphrase_DisplayName" xml:space="preserve">
+    <value>SecurePassphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_SecurePassphrase_Description" xml:space="preserve">
+    <value>SecureString Passphrase is a word or phrase used to encrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_KeySize_DisplayName" xml:space="preserve">
+    <value>KeySize</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_KeySize_Description" xml:space="preserve">
+    <value>Key size.  Default: 2048</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_Identity_DisplayName" xml:space="preserve">
+    <value>Identity</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_Identity_Description" xml:space="preserve">
+    <value>Recipient email address</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_Overwrite_DisplayName" xml:space="preserve">
+    <value>Overwrite</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_Overwrite_Description" xml:space="preserve">
+    <value>Overwrite output files.  Default: False</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_Result_DisplayName" xml:space="preserve">
+    <value>Result</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_Result_Description" xml:space="preserve">
+    <value>Result of operation.  True if successful</value>
+    <comment>property description</comment>
+  </data>
+  <data name="GenerateKeys_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="GenerateKeys_Status_Description" xml:space="preserve">
+    <value>Status codes or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_DisplayName" xml:space="preserve">
+    <value>Encrypt and Sign File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="EncryptAndSignFile_Description" xml:space="preserve">
+    <value>Encrypt a file using the provided public key and then cryptographically sign the file</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="EncryptAndSignFile_FileOut_DisplayName" xml:space="preserve">
+    <value>FileOut</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_FileOut_Description" xml:space="preserve">
+    <value>The output encrypted and signed file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_FileIn_DisplayName" xml:space="preserve">
+    <value>FileIn</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_FileIn_Description" xml:space="preserve">
+    <value>The input raw text file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_FilePublicKey_DisplayName" xml:space="preserve">
+    <value>FilePublicKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_FilePublicKey_Description" xml:space="preserve">
+    <value>File path to read in the Public Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_FilePrivateKey_DisplayName" xml:space="preserve">
+    <value>FilePrivateKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_FilePrivateKey_Description" xml:space="preserve">
+    <value>File path to read in the Private Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_Overwrite_DisplayName" xml:space="preserve">
+    <value>Overwrite</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_Overwrite_Description" xml:space="preserve">
+    <value>Overwrite output files.  Default: False</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_Passphrase_DisplayName" xml:space="preserve">
+    <value>Passphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_Passphrase_Description" xml:space="preserve">
+    <value>Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_Result_DisplayName" xml:space="preserve">
+    <value>Result</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_Result_Description" xml:space="preserve">
+    <value>Result of operation.  True if successful</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_SecurePassphrase_DisplayName" xml:space="preserve">
+    <value>SecurePassphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_SecurePassphrase_Description" xml:space="preserve">
+    <value>SecureString Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="EncryptAndSignFile_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="EncryptAndSignFile_Status_Description" xml:space="preserve">
+    <value>Status codes or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_DisplayName" xml:space="preserve">
+    <value>Decrypt and Verify File</value>
+    <comment>activity name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Description" xml:space="preserve">
+    <value>Decrypt a file using the provided private key and passphrase, then verify the file was signed by the matching public key</value>
+    <comment>activity description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FileOut_DisplayName" xml:space="preserve">
+    <value>FileOut</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FileOut_Description" xml:space="preserve">
+    <value>The output decrypted and verified file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FileIn_DisplayName" xml:space="preserve">
+    <value>FileIn</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FileIn_Description" xml:space="preserve">
+    <value>The input encrypted and signed file</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FilePublicKey_DisplayName" xml:space="preserve">
+    <value>FilePublicKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FilePublicKey_Description" xml:space="preserve">
+    <value>File path to read in the Public Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FilePrivateKey_DisplayName" xml:space="preserve">
+    <value>FilePrivateKey</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_FilePrivateKey_Description" xml:space="preserve">
+    <value>File path to read in the Private Key</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Passphrase_DisplayName" xml:space="preserve">
+    <value>Passphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Passphrase_Description" xml:space="preserve">
+    <value>Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_SecurePassphrase_DisplayName" xml:space="preserve">
+    <value>SecurePassphrase</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_SecurePassphrase_Description" xml:space="preserve">
+    <value>SecureString Passphrase is a word or phrase used to decrypt your private key on your machine</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Overwrite_DisplayName" xml:space="preserve">
+    <value>Overwrite</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Overwrite_Description" xml:space="preserve">
+    <value>Overwrite output files.  Default: False</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Verified_DisplayName" xml:space="preserve">
+    <value>Verified</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Verified_Description" xml:space="preserve">
+    <value>Result of operation.  True if successful</value>
+    <comment>property description</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Status_DisplayName" xml:space="preserve">
+    <value>Status</value>
+    <comment>property name</comment>
+  </data>
+  <data name="DecryptAndVerifyFile_Status_Description" xml:space="preserve">
+    <value>Status codes or errors that were encountered during the Process</value>
+    <comment>property description</comment>
+  </data>
+</root>
