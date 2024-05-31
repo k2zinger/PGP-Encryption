@@ -6,7 +6,7 @@
     "UiPath.Form.Activities": "[2.0.7]",
     "UiPath.System.Activities": "[23.10.3]",
     "UiPath.UIAutomation.Activities": "[23.10.8]",
-    "UiPathTeam.PGPEncryption.Activities": "[1.0.7]"
+    "UiPathTeam.PGPEncryption.Activities": "[1.0.8]"
   },
   "webServices": [],
   "entitiesStores": [],
